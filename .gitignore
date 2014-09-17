@@ -1,0 +1,10 @@
+# backups texto
+*~
+*.swp
+
+# aux
+tags
+cscope.out
+
+# pastona do kernel linux
+linux-*
