@@ -5,7 +5,7 @@
 asmlinkage int sys_print_a_pony(void) { 
 	
 	// HELLO, I'M A PONY! xD
-	pony_string = "\
+	char pony_string[] = "\
  _   _      _ _          ___ _                                             _\n\
 | | | | ___| | | ___    |_ _( )_ __ ___     __ _   _ __   ___  _ __  _   _| |\n\
 | |_| |/ _ \\ | |/ _ \\    | ||/| '_ ` _ \\   / _` | | '_ \\ / _ \\| '_ \\| | | | |\n\

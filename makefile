@@ -17,12 +17,16 @@ unistd_dir = /usr/include/asm
 kernel_src_dir = $(linux_dir)/kernel
 
 # código-fonte da nova syscall (altere com argumento para make)
-new_syscall = print_a_pony.c
+new_syscall = print_a_pony/
 
 # copia o que mudamos
 # e chama o make do linux
 all: syscall_table syscalls_header source_code_and_makefile
-	$(MAKE) -C $(linux_dir) bzImage
+	$(MAKE) -C $(linux_dir) menuconfig
+	$(MAKE) -C $(linux_dir)
+
+install :
+	$(MAKE) -C $(linux_dir) modules_install install
 
 syscall_table: syscall_32.tbl syscall_64.tbl
 	cp $< $(syscall_table_dir)/
@@ -31,11 +35,11 @@ syscalls_header: syscalls.h
 	cp $< $(syscalls_header_dir)/
 
 source_code_and_makefile: $(new_syscall) kernel_Makefile
-	cp $< $(kernel_src_dir)/
+	cp -r $< $(kernel_src_dir)/
 
 get_files:
-	cp $(syscall_table_dir)/syscall_32.tbl ./
-	cp $(syscall_table_dir)/syscall_64.tbl ./
-	cp $(syscalls_header_dir)/syscalls.h   ./
-	cp $(kernel_src_dir)/Makefile          ./kernel_Makefile
+	cp $(syscall_table_dir)/syscall_32.tbl	./
+	cp $(syscall_table_dir)/syscall_64.tbl	./
+	cp $(syscalls_header_dir)/syscalls.h	./
+	cp $(kernel_src_dir)/Makefile			./kernel_Makefile
 
