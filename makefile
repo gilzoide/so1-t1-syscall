@@ -22,8 +22,10 @@ new_syscall = print_a_pony/
 # copia o que mudamos
 # e chama o make do linux
 all: syscall_table syscalls_header source_code_and_makefile
-	$(MAKE) -C $(linux_dir) menuconfig
 	$(MAKE) -C $(linux_dir)
+
+menuconfig :
+	$(MAKE) -C $(linux_dir) menuconfig
 
 install :
 	$(MAKE) -C $(linux_dir) modules_install install
@@ -36,6 +38,7 @@ syscalls_header: syscalls.h
 
 source_code_and_makefile: $(new_syscall) kernel_Makefile
 	cp -r $< $(kernel_src_dir)/
+	cp $(word 2, $^) $(kernel_src_dir)/Makefile
 
 get_files:
 	cp $(syscall_table_dir)/syscall_32.tbl	./
