@@ -323,7 +323,7 @@
 314	common	sched_setattr		sys_sched_setattr
 315	common	sched_getattr		sys_sched_getattr
 316	common	renameat2		sys_renameat2
-317	common 	print_a_pony 	sys_print_a_pony
+317	common 	processa_processo 	sys_processa_processo
 
 #
 # x32-specific system call numbers start at 512 to avoid cache impact

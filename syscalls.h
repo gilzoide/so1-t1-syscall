@@ -868,6 +868,6 @@ asmlinkage long sys_kcmp(pid_t pid1, pid_t pid2, int type,
 asmlinkage long sys_finit_module(int fd, const char __user *uargs, int flags);
 
 // Nossa syscall
-asmlinkage int sys_print_a_pony(void);
+asmlinkage int sys_processa_processo(void);
 #endif
 

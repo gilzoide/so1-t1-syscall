@@ -17,7 +17,8 @@ unistd_dir = /usr/include/asm
 kernel_src_dir = $(linux_dir)/kernel
 
 # código-fonte da nova syscall (altere com argumento para make)
-new_syscall = print_a_pony/
+#new_syscall = print_a_pony/
+new_syscall = processa_processo/
 
 # copia o que mudamos
 # e chama o make do linux
@@ -30,7 +31,7 @@ menuconfig :
 install :
 	$(MAKE) -C $(linux_dir) modules_install install
 
-syscall_table: syscall_32.tbl syscall_64.tbl
+syscall_table: syscall_64.tbl
 	cp $< $(syscall_table_dir)/
 
 syscalls_header: syscalls.h
@@ -41,7 +42,7 @@ source_code_and_makefile: $(new_syscall) kernel_Makefile
 	cp $(word 2, $^) $(kernel_src_dir)/Makefile
 
 get_files:
-	cp $(syscall_table_dir)/syscall_32.tbl	./
+	#cp $(syscall_table_dir)/syscall_32.tbl	./
 	cp $(syscall_table_dir)/syscall_64.tbl	./
 	cp $(syscalls_header_dir)/syscalls.h	./
 	cp $(kernel_src_dir)/Makefile			./kernel_Makefile
