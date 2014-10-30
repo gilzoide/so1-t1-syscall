@@ -6,8 +6,8 @@
 asmlinkage int sys_processa_processo (void) {
 	printk (KERN_INFO 
 			"Processo %d esta sendo processado\n"
-			"O advogado apresenta as evidências\n"
-			"O juri dá o veredito: ", current->pid);
+			"O advogado apresenta as evidencias\n"
+			"O juri da o veredito: ", current->pid);
 
 	// culpado!
 	if (get_random_int () % 4) {
